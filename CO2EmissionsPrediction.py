@@ -9,12 +9,12 @@ model = load_model('CO2_emissions_model.h5', compile=False)
 st.title('CO2 Emissions Prediction')
 
 # Input fields for the vehicle parameters
-engine_size = st.number_input('Engine Size (L)', min_value=0.0, format="%.1f")
+engine_size = st.number_input('Engine Size (L)', min_value=0.0, format="%.2f")
 cylinders = st.number_input('Cylinders', min_value=1, step=1)
-fuel_city = st.number_input('Fuel Consumption City (L/100 km)', min_value=0.0, format="%.1f")
-fuel_hwy = st.number_input('Fuel Consumption Hwy (L/100 km)', min_value=0.0, format="%.1f")
-fuel_comb = st.number_input('Fuel Consumption Comb (L/100 km)', min_value=0.0, format="%.1f")
-fuel_comb_mpg = st.number_input('Fuel Consumption Comb (mpg)', min_value=1, step=1)
+fuel_city = st.number_input('Fuel Consumption City (L/100 km)', min_value=0.0, format="%.2f")
+fuel_hwy = st.number_input('Fuel Consumption Hwy (L/100 km)', min_value=0.0, format="%.2f")
+fuel_comb = st.number_input('Fuel Consumption Comb (L/100 km)', min_value=0.0, format="%.2f")
+fuel_comb_mpg = st.number_input('Fuel Consumption Comb (mpg)', min_value=0.0, format="%.2f")
 
 # Button to trigger prediction
 if st.button('Predict'):
