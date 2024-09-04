@@ -2,11 +2,11 @@ import streamlit as st
 from tensorflow.keras.models import load_model
 import numpy as np
 
-# Load the pre-trained model without compiling it to avoid the warnings
+# Load the pre-trained model without compiling it to avoid warnings
 model = load_model('CO2_emissions_model.h5', compile=False)
 
 # Title of the web app
-st.title('CO2 Emissions Prediction')
+st.title('CO2 Emissions and Carbon Tax Calculation')
 
 # Input fields for the vehicle parameters
 engine_size = st.number_input('Engine Size (L)', min_value=0.0, format="%.2f")
@@ -27,5 +27,12 @@ if st.button('Predict'):
         # Make a prediction using the pre-trained model
         prediction = model.predict(features)
 
-        # Display the prediction result
-        st.write(f"Predicted CO2 Emissions: {float(prediction[0][0])} g/km")
+        # Extract the predicted CO2 emissions
+        co2_emissions = float(prediction[0][0])
+
+        # Calculate the amount due for carbon tax
+        amount_due = round(co2_emissions * 400, 2)
+
+        # Display the prediction and the amount due
+        st.write(f"Predicted CO2 Emissions: {co2_emissions} g/km")
+        st.write(f"Amount Due for Carbon Tax: ZWK {amount_due:.2f}")
